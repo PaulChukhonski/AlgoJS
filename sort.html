@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sort</title>
+</head>
+<body>
+    <h2>Пузырьковая и быстрая сортировка на JavaScript</h2>
+    <script>
+        function bubbleSort(arr) {
+            for (let j = arr.length - 1; j > 0; j--) {
+                for (let i = 0; i < j; i++) {
+                    if (arr[i] > arr[i + 1]) {
+                        let temp = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        function quickSort(arr, start, end) {
+            const pivotValue = arr[end];
+            let pivotIndex = start;
+            for (let i = start; i < end; i++) {
+                if (arr[i] < pivotValue) {
+                    [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+                    pivotIndex++;
+                }
+            }
+
+            [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]]
+            return pivotIndex;
+        }
+
+        const arr = [7, 5, 9, 8, 100, 50, 1, 81];
+        document.write("Исходный массив: " + arr + "<br>");
+
+        bubbleSort(arr);
+        document.write("Отсортированный массив(bubble): " + arr + "<br>");
+
+        quickSort(arr);
+        document.write("Отсортированный массив(quick): " + arr + "<br>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Triangle</title>
+</head>
+<body>
+    <h2>Треугольник из * на JavaScript</h2>
+    <script>
+        function triangleDraw(symbol, height) {
+            for(let i = 0; i < height; i++) {
+                for(let j = 0; j <= i; j++) {
+                    document.write(symbol);
+                }
+                document.write('<br>');
+            }
+        }
+
+        function revertTriangleDraw(symbol, height) {
+            for(; height > 0 ; height--) {
+                for(let i = 0; i < height; i++) {
+                    document.write(symbol);
+                }
+                document.write('<br>');
+            }
+        }
+
+        const symbol = '*';
+        const height = 5;
+        triangleDraw(symbol, height);
+	revertTriangleDraw(symbol, height);
+    </script>
+</body>
+</html>

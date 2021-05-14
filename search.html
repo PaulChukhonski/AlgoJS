@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search</title>
+</head>
+<body>
+    <h2>Линейный и бинарный поиск на JavaScript</h2>
+    <script>
+        function bubbleSort(arr) {
+            for (let j = arr.length - 1; j > 0; j--) {
+                for (let i = 0; i < j; i++) {
+                    if (arr[i] > arr[i + 1]) {
+                        let temp = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        function linearSearch(arr, value) {
+            let pos = -1;
+
+            for(let i = 0; i < arr.length; i++)
+            {
+                if(arr[i] === value)
+                {
+                    pos = i;
+                }
+            }
+
+            return pos;
+        }
+
+        function binarySearch(arr, value) {
+            let left = 0, right = arr.length - 1, mid = 0;
+
+            while (true)
+            {
+                if (left > right) return (-1);
+                mid = left + Math.floor((right - left) / 2);
+                if (arr[mid] < value) left = mid + 1;
+                if (arr[mid] > value) right = mid - 1;
+                if (arr[mid] === value) return mid;
+            }
+        }
+
+        const arr = [7, 5, 9, 8, 100, 50, 1, 81];
+        const value = 9;
+        document.write("Исходный массив: " + arr + "<br>");
+        document.write("Поиск элемента: " + value + "<br>");
+
+        document.write("Линейный поиск: " + linearSearch(arr, value) + "<br>");
+        document.write("Бинарный поиск: " + binarySearch(arr, value) + "<br>");
+
+        bubbleSort(arr);
+        document.write("Отсортированный массив: " + arr + "<br>");
+        document.write("Линейный поиск: " + linearSearch(arr, value) + "<br>");
+        document.write("Бинарный поиск: " + binarySearch(arr, value) + "<br>");
+    </script>
+</body>
+</html>
